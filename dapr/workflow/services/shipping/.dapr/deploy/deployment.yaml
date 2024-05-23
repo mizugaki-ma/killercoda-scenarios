@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shipping
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        dapr.io/app-id: shipping
+        dapr.io/app-port: "3004"
+        dapr.io/config: appconfig
+        dapr.io/enabled: "true"
+        dapr.io/metrics-port: "33489"
+        dapr.io/unix-domain-socket-path: ""
+      creationTimestamp: null
+      labels:
+        app: shipping
+    spec:
+      containers:
+      - env:
+        - name: APP_CHANNEL_ADDRESS
+        - name: APP_PORT
+          value: "3004"
+        - name: DAPR_METRICS_PORT
+          value: "33489"
+        - name: APP_ID
+          value: shipping
+        image: ttl.sh/shipping-9955862@sha256:5eec17f283a4a1d58dcc1daba41a921740e60f18958cb3a2560e2558e58dd74f
+        imagePullPolicy: Always
+        name: shipping
+        ports:
+        - containerPort: 3004
+        resources: {}

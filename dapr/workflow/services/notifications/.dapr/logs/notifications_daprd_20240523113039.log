@@ -1,0 +1,59 @@
+Starting Dapr with id notifications. HTTP Port: 38221. gRPC Port: 43017
+Updating metadata for cliPID: 1501770
+time="2024-05-23T11:30:39.380505512+09:00" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.380768325+09:00" level=info msg="Log level set to: info" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.381085372+09:00" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=notifications instance=ubu scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T11:30:39.381689424+09:00" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.38229847+09:00" level=info msg="metrics server started on :44293/" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.382512322+09:00" level=info msg="standalone mode configured" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.382669739+09:00" level=info msg="app id: notifications" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.382839493+09:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.383595497+09:00" level=info msg="local service entry announced: notifications -> 192.168.2.197:39853" app_id=notifications component="nr (mdns/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:39.383640804+09:00" level=info msg="Initialized name resolution to mdns" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.383687215+09:00" level=info msg="Loading components…" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.387361221+09:00" level=info msg="Component loaded: orders (pubsub.redis/v1)" app_id=notifications instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:39.387702151+09:00" level=info msg="Waiting for all outstanding components to be processed…" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.388953085+09:00" level=info msg="Using 'statestore' as actor state store" app_id=notifications instance=ubu scope=dapr.runtime.processor.state type=log ver=1.13.2
+time="2024-05-23T11:30:39.389016125+09:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=notifications instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:39.389039812+09:00" level=info msg="All outstanding components processed" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.389067072+09:00" level=info msg="Loading endpoints…" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.389327168+09:00" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.389360599+09:00" level=info msg="All outstanding http endpoints processed" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.38945178+09:00" level=info msg="gRPC server listening on TCP address: :43017" app_id=notifications instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:39.389473997+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=notifications instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:39.389483378+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=notifications instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:39.389563705+09:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:43017" app_id=notifications instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:39.389598269+09:00" level=info msg="API gRPC server is running on port 43017" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.389657061+09:00" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=notifications instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:39.389672661+09:00" level=info msg="Enabled tracing HTTP middleware" app_id=notifications instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:39.389682662+09:00" level=info msg="Enabled metrics HTTP middleware" app_id=notifications instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:39.389968855+09:00" level=info msg="HTTP server listening on TCP address: :38221" app_id=notifications instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:39.390015832+09:00" level=info msg="HTTP server is running on port 38221" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.390029014+09:00" level=info msg="The request body size parameter is: 4" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.390056584+09:00" level=info msg="gRPC server listening on TCP address: :39853" app_id=notifications instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:39.390070732+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=notifications instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:39.390081463+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=notifications instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:39.390116612+09:00" level=info msg="Internal gRPC server is running on port 39853" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.390173437+09:00" level=info msg="application protocol: http. waiting on port 3001.  This will block until the app is listening on that port." app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.793015837+09:00" level=info msg="application discovered on port 3001" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.795539936+09:00" level=info msg="Application configuration loaded" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.795587232+09:00" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:localhost:50005'" app_id=notifications instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:39.795605057+09:00" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=notifications instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:39.79562914+09:00" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=notifications instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:39.795640956+09:00" level=info msg="Configuring workflow engine with actors backend" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.79564848+09:00" level=info msg="Registering component for dapr workflow engine..." app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.795660415+09:00" level=info msg="Initializing Dapr workflow component" app_id=notifications component="dapr (workflow.dapr/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:39.795670469+09:00" level=info msg="Workflow engine initialized." app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.798217935+09:00" level=info msg="app is subscribed to the following topics: [notifications] through pubsub=orders" app_id=notifications instance=ubu scope=dapr.runtime.processor.pubsub type=log ver=1.13.2
+time="2024-05-23T11:30:39.799406202+09:00" level=info msg="dapr initialized. Status: Running. Init Elapsed 417ms" app_id=notifications instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:39.803290225+09:00" level=info msg="Actor API level in the cluster has been updated to 10" app_id=notifications instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:39.80335275+09:00" level=info msg="Placement tables updated, version: 49" app_id=notifications instance=ubu scope=dapr.runtime.actors.placement type=log ver=1.13.2
+Updating metadata for app command: python3 app.py
+Updating metadata for appPID: 1502067
+You're up and running! Dapr logs will appear here.
+
+time="2024-05-23T11:30:53.68271014+09:00" level=info msg="Received signal 'interrupt'; beginning shutdown" app_id=notifications instance=ubu scope=dapr.signals type=log ver=1.13.2
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

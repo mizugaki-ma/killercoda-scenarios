@@ -1,0 +1,63 @@
+Starting Dapr with id orderprocessing. HTTP Port: 43835. gRPC Port: 33133
+Updating metadata for cliPID: 1498938
+time="2024-05-23T11:30:02.586209052+09:00" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.586732715+09:00" level=info msg="Log level set to: info" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.587185398+09:00" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=orderprocessing instance=ubu scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T11:30:02.587548064+09:00" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588248343+09:00" level=info msg="metrics server started on :46087/" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588455591+09:00" level=info msg="standalone mode configured" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588472833+09:00" level=info msg="app id: orderprocessing" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588523047+09:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588903384+09:00" level=info msg="local service entry announced: orderprocessing -> 192.168.2.197:39339" app_id=orderprocessing component="nr (mdns/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:02.588916669+09:00" level=info msg="Initialized name resolution to mdns" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.588959583+09:00" level=info msg="Loading components…" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.592345948+09:00" level=info msg="Component loaded: orders (pubsub.redis/v1)" app_id=orderprocessing instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:02.592858336+09:00" level=info msg="Waiting for all outstanding components to be processed…" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.593948329+09:00" level=info msg="Using 'statestore' as actor state store" app_id=orderprocessing instance=ubu scope=dapr.runtime.processor.state type=log ver=1.13.2
+time="2024-05-23T11:30:02.594299825+09:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=orderprocessing instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:02.594320761+09:00" level=info msg="All outstanding components processed" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.594349951+09:00" level=info msg="Loading endpoints…" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.594529843+09:00" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.594537707+09:00" level=info msg="All outstanding http endpoints processed" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.594582964+09:00" level=info msg="gRPC server listening on TCP address: :33133" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:02.594592703+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:02.594596658+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:02.594637899+09:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:33133" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:02.594757986+09:00" level=info msg="API gRPC server is running on port 33133" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.594976801+09:00" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=orderprocessing instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:02.595203851+09:00" level=info msg="Enabled tracing HTTP middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:02.595483665+09:00" level=info msg="Enabled metrics HTTP middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:02.596043459+09:00" level=info msg="HTTP server listening on TCP address: :43835" app_id=orderprocessing instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:02.59634456+09:00" level=info msg="HTTP server is running on port 43835" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.596627918+09:00" level=info msg="The request body size parameter is: 4" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.596934143+09:00" level=info msg="gRPC server listening on TCP address: :39339" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:02.597202458+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:02.597466376+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=orderprocessing instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:02.597779391+09:00" level=info msg="Internal gRPC server is running on port 39339" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.598162827+09:00" level=info msg="application protocol: http. waiting on port 3000.  This will block until the app is listening on that port." app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:02.924742939+09:00" level=info msg="work item stream established by user-agent: [grpc-python/1.63.0 grpc-c/40.0.0 (linux; chttp2)]" app_id=orderprocessing instance=ubu scope=dapr.runtime.wfengine type=log ver=1.13.2
+time="2024-05-23T11:30:03.001431547+09:00" level=info msg="application discovered on port 3000" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.003493477+09:00" level=info msg="Application configuration loaded" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.003527023+09:00" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:localhost:50005'" app_id=orderprocessing instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:03.003540805+09:00" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=orderprocessing instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:03.003566642+09:00" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=orderprocessing instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:03.003579823+09:00" level=info msg="Configuring workflow engine with actors backend" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.003587393+09:00" level=info msg="Registering component for dapr workflow engine..." app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.003596018+09:00" level=info msg="Initializing Dapr workflow component" app_id=orderprocessing component="dapr (workflow.dapr/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:03.003606734+09:00" level=info msg="Workflow engine initialized." app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.003752884+09:00" level=info msg="worker started with backend dapr.actors/v1-beta" app_id=orderprocessing instance=ubu scope=wfengine.durabletask.backend type=log ver=1.13.2
+time="2024-05-23T11:30:03.003767301+09:00" level=info msg="Workflow engine started" app_id=orderprocessing instance=ubu scope=dapr.runtime.wfengine type=log ver=1.13.2
+time="2024-05-23T11:30:03.005698671+09:00" level=info msg="dapr initialized. Status: Running. Init Elapsed 417ms" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:03.006659014+09:00" level=info msg="Actor API level in the cluster has been updated to 10" app_id=orderprocessing instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:03.00667371+09:00" level=info msg="Placement tables updated, version: 46" app_id=orderprocessing instance=ubu scope=dapr.runtime.actors.placement type=log ver=1.13.2
+time="2024-05-23T11:30:03.007272057+09:00" level=info msg="Error processing operation DaprBuiltInActorNotFoundRetries. Retrying in 1s…" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+Updating metadata for app command: python3 app.py
+Updating metadata for appPID: 1499079
+You're up and running! Dapr logs will appear here.
+
+time="2024-05-23T11:30:05.294421547+09:00" level=info msg="Placement tables updated, version: 47" app_id=orderprocessing instance=ubu scope=dapr.runtime.actors.placement type=log ver=1.13.2
+time="2024-05-23T11:30:06.007947803+09:00" level=info msg="Recovered processing operation DaprBuiltInActorNotFoundRetries after 4 attempts" app_id=orderprocessing instance=ubu scope=dapr.runtime type=log ver=1.13.2
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

@@ -1,0 +1,57 @@
+time="2024-05-23T02:59:41.046825276Z" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.046848841Z" level=info msg="Log level set to: info" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.047043681Z" level=info msg="Fetching initial identity certificate from dapr-sentry.dapr-system.svc.cluster.local:443" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:41.05804221Z" level=info msg="Security is initialized successfully" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:41.058135643Z" level=info msg="Initializing the operator client" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.058074347Z" level=info msg="Starting workload cert expiry watcher; current cert expires on: 2024-05-24 02:59:41 +0000 UTC, renewing at 2024-05-23 19:43:11 +0000 UTC" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:41.071321867Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082019583Z" level=info msg="metrics server started on :37601/" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082182826Z" level=info msg="kubernetes mode configured" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082201965Z" level=info msg="app id: inventory" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082243988Z" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082409873Z" level=info msg="Initialized name resolution to kubernetes" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.082758354Z" level=info msg="Component loaded: kubernetes (secretstores.kubernetes/v1)" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:41.08281393Z" level=info msg="Loading components…" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.088359513Z" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:41.088536824Z" level=info msg="Waiting for all outstanding components to be processed…" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.091598225Z" level=info msg="Component loaded: pubsub (pubsub.redis/v1)" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:41.091628447Z" level=info msg="All outstanding components processed" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.091647684Z" level=info msg="Loading endpoints…" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.094639229Z" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.094653297Z" level=info msg="All outstanding http endpoints processed" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.094719091Z" level=info msg="gRPC server listening on TCP address: [::1]:50001" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094741466Z" level=info msg="gRPC server listening on TCP address: 127.0.0.1:50001" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.09476441Z" level=info msg="Enabled gRPC tracing middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094768818Z" level=info msg="Enabled gRPC metrics middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094810316Z" level=info msg="Registering workflow engine for gRPC endpoint: [::1]:50001" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094833109Z" level=info msg="Enabled gRPC tracing middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094839688Z" level=info msg="Enabled gRPC metrics middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094857924Z" level=info msg="Registering workflow engine for gRPC endpoint: 127.0.0.1:50001" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:41.094868829Z" level=info msg="API gRPC server is running on port 50001" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.09494233Z" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.094952459Z" level=info msg="Enabled tracing HTTP middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.094956988Z" level=info msg="Enabled metrics HTTP middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.09510787Z" level=info msg="HTTP server listening on TCP address: [::1]:3500" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.095122833Z" level=info msg="HTTP server listening on TCP address: 127.0.0.1:3500" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.095138051Z" level=info msg="Enabled tracing HTTP middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.095145932Z" level=info msg="Enabled metrics HTTP middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:41.095165374Z" level=info msg="HTTP server is running on port 3500" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.095172558Z" level=info msg="The request body size parameter is: 4" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.095184761Z" level=info msg="gRPC server listening on TCP address: :50002" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:41.09519353Z" level=info msg="Enabled gRPC tracing middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:41.095197355Z" level=info msg="Enabled gRPC metrics middleware" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:41.095216047Z" level=info msg="Internal gRPC server is running on port 50002" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.095280941Z" level=info msg="application protocol: http. waiting on port 3002.  This will block until the app is listening on that port." app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.616893829Z" level=info msg="application discovered on port 3002" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.618998453Z" level=info msg="Application configuration loaded" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.61902251Z" level=info msg="actors: state store is not configured - this is okay for clients but services with hosted actors will fail to initialize!" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.619051458Z" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:dapr-placement-server.dapr-system.svc.cluster.local:50005'" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:41.619083689Z" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:41.619112204Z" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:41.619126404Z" level=info msg="Configuring workflow engine with actors backend" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.619133566Z" level=info msg="Registering component for dapr workflow engine..." app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.619160964Z" level=info msg="Initializing Dapr workflow component" app_id=inventory component="dapr (workflow.dapr/v1)" instance=inventory-589bfcfdc-86nhr scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T02:59:41.619179304Z" level=info msg="Workflow engine initialized." app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.622449029Z" level=info msg="dapr initialized. Status: Running. Init Elapsed 540ms" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:41.668069396Z" level=info msg="Placement tables updated, version: 0" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.actors.placement type=log ver=1.13.2
+time="2024-05-23T04:40:27.313526735Z" level=info msg="Placement tables updated, version: 0" app_id=inventory instance=inventory-589bfcfdc-86nhr scope=dapr.runtime.actors.placement type=log ver=1.13.2

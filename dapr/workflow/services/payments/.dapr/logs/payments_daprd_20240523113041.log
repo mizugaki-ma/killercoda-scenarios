@@ -1,0 +1,58 @@
+Starting Dapr with id payments. HTTP Port: 36777. gRPC Port: 34485
+Updating metadata for cliPID: 1501770
+time="2024-05-23T11:30:41.397907732+09:00" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.397968537+09:00" level=info msg="Log level set to: info" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.398077904+09:00" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=payments instance=ubu scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T11:30:41.398521861+09:00" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399006292+09:00" level=info msg="metrics server started on :44743/" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399057985+09:00" level=info msg="standalone mode configured" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399087169+09:00" level=info msg="app id: payments" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399140367+09:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399494635+09:00" level=info msg="local service entry announced: payments -> 192.168.2.197:41891" app_id=payments component="nr (mdns/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:41.399524013+09:00" level=info msg="Initialized name resolution to mdns" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.399558367+09:00" level=info msg="Loading components…" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.40205712+09:00" level=info msg="Component loaded: orders (pubsub.redis/v1)" app_id=payments instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:41.402374818+09:00" level=info msg="Waiting for all outstanding components to be processed…" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.403407347+09:00" level=info msg="Using 'statestore' as actor state store" app_id=payments instance=ubu scope=dapr.runtime.processor.state type=log ver=1.13.2
+time="2024-05-23T11:30:41.403488807+09:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=payments instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:30:41.403519255+09:00" level=info msg="All outstanding components processed" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.403550732+09:00" level=info msg="Loading endpoints…" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.403860561+09:00" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.403896765+09:00" level=info msg="All outstanding http endpoints processed" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.403979416+09:00" level=info msg="gRPC server listening on TCP address: :34485" app_id=payments instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:41.403997588+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=payments instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:41.40400687+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=payments instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:41.404070813+09:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:34485" app_id=payments instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:30:41.404112386+09:00" level=info msg="API gRPC server is running on port 34485" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.40423804+09:00" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=payments instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:41.404258766+09:00" level=info msg="Enabled tracing HTTP middleware" app_id=payments instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:41.404267561+09:00" level=info msg="Enabled metrics HTTP middleware" app_id=payments instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:41.404531311+09:00" level=info msg="HTTP server listening on TCP address: :36777" app_id=payments instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:30:41.404584078+09:00" level=info msg="HTTP server is running on port 36777" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.404599919+09:00" level=info msg="The request body size parameter is: 4" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.404628484+09:00" level=info msg="gRPC server listening on TCP address: :41891" app_id=payments instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:41.404644548+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=payments instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:41.404652433+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=payments instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:30:41.404685238+09:00" level=info msg="Internal gRPC server is running on port 41891" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.404727081+09:00" level=info msg="application protocol: http. waiting on port 3003.  This will block until the app is listening on that port." app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.605402766+09:00" level=info msg="application discovered on port 3003" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.606969633+09:00" level=info msg="Application configuration loaded" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.607005581+09:00" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:localhost:50005'" app_id=payments instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:41.607023519+09:00" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=payments instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:41.607047417+09:00" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=payments instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:41.607058825+09:00" level=info msg="Configuring workflow engine with actors backend" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.607064928+09:00" level=info msg="Registering component for dapr workflow engine..." app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.607077059+09:00" level=info msg="Initializing Dapr workflow component" app_id=payments component="dapr (workflow.dapr/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:30:41.60708676+09:00" level=info msg="Workflow engine initialized." app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.609858874+09:00" level=info msg="dapr initialized. Status: Running. Init Elapsed 210ms" app_id=payments instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:30:41.610376858+09:00" level=info msg="Actor API level in the cluster has been updated to 10" app_id=payments instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:30:41.610408517+09:00" level=info msg="Placement tables updated, version: 49" app_id=payments instance=ubu scope=dapr.runtime.actors.placement type=log ver=1.13.2
+Updating metadata for app command: python3 app.py
+Updating metadata for appPID: 1502390
+You're up and running! Dapr logs will appear here.
+
+time="2024-05-23T11:30:53.678104242+09:00" level=info msg="Received signal 'interrupt'; beginning shutdown" app_id=payments instance=ubu scope=dapr.signals type=log ver=1.13.2
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

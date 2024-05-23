@@ -1,0 +1,57 @@
+time="2024-05-23T02:59:49.169492381Z" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.169653481Z" level=info msg="Log level set to: info" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.169903809Z" level=info msg="Fetching initial identity certificate from dapr-sentry.dapr-system.svc.cluster.local:443" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:49.190005058Z" level=info msg="Security is initialized successfully" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:49.190238543Z" level=info msg="Starting workload cert expiry watcher; current cert expires on: 2024-05-24 02:59:49 +0000 UTC, renewing at 2024-05-23 19:43:19 +0000 UTC" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T02:59:49.190205036Z" level=info msg="Initializing the operator client" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.208745449Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.218758132Z" level=info msg="kubernetes mode configured" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.218915538Z" level=info msg="app id: payments" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.219028393Z" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.218783194Z" level=info msg="metrics server started on :39913/" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.219269613Z" level=info msg="Initialized name resolution to kubernetes" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.219411365Z" level=info msg="Loading components…" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.219830363Z" level=info msg="Component loaded: kubernetes (secretstores.kubernetes/v1)" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:49.22969002Z" level=info msg="Component loaded: pubsub (pubsub.redis/v1)" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:49.22985574Z" level=info msg="Waiting for all outstanding components to be processed…" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.241946623Z" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T02:59:49.241971463Z" level=info msg="All outstanding components processed" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.241992081Z" level=info msg="Loading endpoints…" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243000393Z" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.24301922Z" level=info msg="All outstanding http endpoints processed" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243081653Z" level=info msg="gRPC server listening on TCP address: [::1]:50001" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243103449Z" level=info msg="gRPC server listening on TCP address: 127.0.0.1:50001" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243111505Z" level=info msg="Enabled gRPC tracing middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243115547Z" level=info msg="Enabled gRPC metrics middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243168167Z" level=info msg="Registering workflow engine for gRPC endpoint: [::1]:50001" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243191047Z" level=info msg="Enabled gRPC tracing middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243196828Z" level=info msg="Enabled gRPC metrics middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243213701Z" level=info msg="Registering workflow engine for gRPC endpoint: 127.0.0.1:50001" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T02:59:49.243224213Z" level=info msg="API gRPC server is running on port 50001" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243262705Z" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243273081Z" level=info msg="Enabled tracing HTTP middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243276843Z" level=info msg="Enabled metrics HTTP middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243448714Z" level=info msg="HTTP server listening on TCP address: [::1]:3500" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243464903Z" level=info msg="HTTP server listening on TCP address: 127.0.0.1:3500" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.24347949Z" level=info msg="Enabled tracing HTTP middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243483764Z" level=info msg="Enabled metrics HTTP middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T02:59:49.243501567Z" level=info msg="HTTP server is running on port 3500" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243509823Z" level=info msg="The request body size parameter is: 4" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243522901Z" level=info msg="gRPC server listening on TCP address: :50002" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:49.243532098Z" level=info msg="Enabled gRPC tracing middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:49.243536527Z" level=info msg="Enabled gRPC metrics middleware" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T02:59:49.243557078Z" level=info msg="Internal gRPC server is running on port 50002" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.243595959Z" level=info msg="application protocol: http. waiting on port 3003.  This will block until the app is listening on that port." app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.958818934Z" level=info msg="application discovered on port 3003" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.960388301Z" level=info msg="Application configuration loaded" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.96040563Z" level=info msg="actors: state store is not configured - this is okay for clients but services with hosted actors will fail to initialize!" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.960425753Z" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:dapr-placement-server.dapr-system.svc.cluster.local:50005'" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:49.960442575Z" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:49.960466154Z" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T02:59:49.960476825Z" level=info msg="Configuring workflow engine with actors backend" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.960481657Z" level=info msg="Registering component for dapr workflow engine..." app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.960490881Z" level=info msg="Initializing Dapr workflow component" app_id=payments component="dapr (workflow.dapr/v1)" instance=payments-6f6966b9d9-gd28c scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T02:59:49.960498912Z" level=info msg="Workflow engine initialized." app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.963168378Z" level=info msg="dapr initialized. Status: Running. Init Elapsed 744ms" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T02:59:49.973736888Z" level=info msg="Placement tables updated, version: 0" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.actors.placement type=log ver=1.13.2
+time="2024-05-23T04:40:34.183689752Z" level=info msg="Placement tables updated, version: 0" app_id=payments instance=payments-6f6966b9d9-gd28c scope=dapr.runtime.actors.placement type=log ver=1.13.2

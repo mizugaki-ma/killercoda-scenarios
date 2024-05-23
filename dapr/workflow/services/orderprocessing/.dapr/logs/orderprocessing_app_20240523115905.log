@@ -1,0 +1,25 @@
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Starting workflow runtime...
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering workflow 'process_order_workflow' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering workflow 'process_order_workflow' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering activity 'notify' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering activity 'notify' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering activity 'reserve_inventory' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering activity 'reserve_inventory' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering activity 'submit_payment' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering activity 'submit_payment' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering activity 'submit_order_to_shipping' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering activity 'submit_order_to_shipping' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 WorkflowRuntime INFO: Registering activity 'refund_payment' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.212 INFO: Registering activity 'refund_payment' with runtime
+== APP - orderprocessing == 2024-05-23 02:59:15.215 durabletask-worker INFO: Starting gRPC worker that connects to dns:127.0.0.1:50001
+== APP - orderprocessing ==  * Serving Flask app 'app'
+== APP - orderprocessing ==  * Debug mode: off
+== APP - orderprocessing == 2024-05-23 02:59:15.224 INFO: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+== APP - orderprocessing ==  * Running on http://127.0.0.1:3000
+== APP - orderprocessing == 2024-05-23 02:59:15.224 INFO: Press CTRL+C to quit
+== APP - orderprocessing == 2024-05-23 02:59:15.225 durabletask-worker WARNING: The sidecar at address dns:127.0.0.1:50001 is unavailable - will continue retrying
+== APP - orderprocessing == 2024-05-23 02:59:20.225 durabletask-worker WARNING: The sidecar at address dns:127.0.0.1:50001 is unavailable - will continue retrying
+== APP - orderprocessing == 2024-05-23 02:59:24.227 INFO: 127.0.0.1 - - [23/May/2024 02:59:24] "GET /dapr/config HTTP/1.1" 404 -
+== APP - orderprocessing == 2024-05-23 02:59:24.229 INFO: 127.0.0.1 - - [23/May/2024 02:59:24] "GET /dapr/subscribe HTTP/1.1" 404 -
+== APP - orderprocessing == 2024-05-23 02:59:25.226 durabletask-worker WARNING: The sidecar at address dns:127.0.0.1:50001 is unavailable - will continue retrying
+== APP - orderprocessing == 2024-05-23 02:59:30.227 durabletask-worker INFO: Successfully connected to dns:127.0.0.1:50001. Waiting for work items...

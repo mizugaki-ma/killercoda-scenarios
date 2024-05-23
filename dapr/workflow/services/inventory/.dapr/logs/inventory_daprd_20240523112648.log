@@ -1,0 +1,67 @@
+Starting Dapr with id inventory. HTTP Port: 33881. gRPC Port: 40941
+Updating metadata for cliPID: 1486796
+time="2024-05-23T11:26:48.454499903+09:00" level=info msg="Starting Dapr Runtime -- version 1.13.2 -- commit f09b193d8ac62bef6c0fd5452a00d2a49cd0d134" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.454767562+09:00" level=info msg="Log level set to: info" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.45514006+09:00" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=inventory instance=ubu scope=dapr.runtime.security type=log ver=1.13.2
+time="2024-05-23T11:26:48.455412234+09:00" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.455952911+09:00" level=info msg="metrics server started on :41355/" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.455997097+09:00" level=info msg="standalone mode configured" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.456498029+09:00" level=info msg="app id: inventory" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.456566363+09:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.45700479+09:00" level=info msg="local service entry announced: inventory -> 192.168.2.197:33345" app_id=inventory component="nr (mdns/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:26:48.457030286+09:00" level=info msg="Initialized name resolution to mdns" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.457065011+09:00" level=info msg="Loading components…" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.459502641+09:00" level=info msg="Component loaded: orders (pubsub.redis/v1)" app_id=inventory instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:26:48.459839758+09:00" level=info msg="Waiting for all outstanding components to be processed…" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.460993433+09:00" level=info msg="Using 'statestore' as actor state store" app_id=inventory instance=ubu scope=dapr.runtime.processor.state type=log ver=1.13.2
+time="2024-05-23T11:26:48.461029303+09:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=inventory instance=ubu scope=dapr.runtime.processor type=log ver=1.13.2
+time="2024-05-23T11:26:48.461048586+09:00" level=info msg="All outstanding components processed" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.461079421+09:00" level=info msg="Loading endpoints…" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.461328623+09:00" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.461339477+09:00" level=info msg="All outstanding http endpoints processed" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.461395293+09:00" level=info msg="gRPC server listening on TCP address: :40941" app_id=inventory instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:26:48.461403834+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=inventory instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:26:48.461407827+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=inventory instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:26:48.461450299+09:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:40941" app_id=inventory instance=ubu scope=dapr.runtime.grpc.api type=log ver=1.13.2
+time="2024-05-23T11:26:48.461467442+09:00" level=info msg="API gRPC server is running on port 40941" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.461513592+09:00" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=inventory instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:26:48.461520794+09:00" level=info msg="Enabled tracing HTTP middleware" app_id=inventory instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:26:48.461524566+09:00" level=info msg="Enabled metrics HTTP middleware" app_id=inventory instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:26:48.461756076+09:00" level=info msg="HTTP server listening on TCP address: :33881" app_id=inventory instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:26:48.462262187+09:00" level=info msg="HTTP server is running on port 33881" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.462281152+09:00" level=info msg="The request body size parameter is: 4" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.462312067+09:00" level=info msg="gRPC server listening on TCP address: :33345" app_id=inventory instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:26:48.462322145+09:00" level=info msg="Enabled gRPC tracing middleware" app_id=inventory instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:26:48.462328728+09:00" level=info msg="Enabled gRPC metrics middleware" app_id=inventory instance=ubu scope=dapr.runtime.grpc.internal type=log ver=1.13.2
+time="2024-05-23T11:26:48.462379743+09:00" level=info msg="Internal gRPC server is running on port 33345" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.462434479+09:00" level=info msg="application protocol: http. waiting on port 3002.  This will block until the app is listening on that port." app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.66312681+09:00" level=info msg="application discovered on port 3002" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.665237709+09:00" level=info msg="Application configuration loaded" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.665270602+09:00" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:localhost:50005'" app_id=inventory instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:26:48.665285108+09:00" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=inventory instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:26:48.66530741+09:00" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=inventory instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:26:48.665316955+09:00" level=info msg="Configuring workflow engine with actors backend" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.665321135+09:00" level=info msg="Registering component for dapr workflow engine..." app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.66533036+09:00" level=info msg="Initializing Dapr workflow component" app_id=inventory component="dapr (workflow.dapr/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:26:48.665337972+09:00" level=info msg="Workflow engine initialized." app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.667018296+09:00" level=info msg="dapr initialized. Status: Running. Init Elapsed 211ms" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:26:48.668880257+09:00" level=info msg="Actor API level in the cluster has been updated to 10" app_id=inventory instance=ubu scope=dapr.runtime.actor type=log ver=1.13.2
+time="2024-05-23T11:26:48.668932629+09:00" level=info msg="Placement tables updated, version: 43" app_id=inventory instance=ubu scope=dapr.runtime.actors.placement type=log ver=1.13.2
+Updating metadata for app command: python3 app.py
+Updating metadata for appPID: 1487452
+You're up and running! Dapr logs will appear here.
+
+time="2024-05-23T11:27:36.478779796+09:00" level=info msg="Received signal 'interrupt'; beginning shutdown" app_id=inventory instance=ubu scope=dapr.signals type=log ver=1.13.2
+time="2024-05-23T11:27:36.48028574+09:00" level=info msg="Closing HTTP server [::]:33881…" app_id=inventory instance=ubu scope=dapr.runtime.http type=log ver=1.13.2
+time="2024-05-23T11:27:36.482807023+09:00" level=info msg="stopping mDNS server for app id: inventory" app_id=inventory component="nr (mdns/v1)" instance=ubu scope=dapr.contrib type=log ver=1.13.2
+time="2024-05-23T11:27:36.479663992+09:00" level=info msg="Dapr is shutting down" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.486070064+09:00" level=info msg="Shutting down component statestore (state.redis/v1)" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.482729371+09:00" level=info msg="Shutting down workflow engine" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.486404437+09:00" level=info msg="Shutting down component orders (pubsub.redis/v1)" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.482731936+09:00" level=info msg="Shutting down actor" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.492270981+09:00" level=info msg="Dapr runtime stopped" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+time="2024-05-23T11:27:36.495424082+09:00" level=info msg="Daprd shutdown gracefully" app_id=inventory instance=ubu scope=dapr.runtime type=log ver=1.13.2
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

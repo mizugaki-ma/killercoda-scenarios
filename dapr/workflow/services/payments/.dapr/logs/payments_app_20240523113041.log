@@ -1,0 +1,9 @@
+== APP - payments ==  * Serving Flask app 'app'
+== APP - payments ==  * Debug mode: on
+== APP - payments == 2024-05-23 11:30:41.576 INFO: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+== APP - payments ==  * Running on http://127.0.0.1:3003
+== APP - payments == 2024-05-23 11:30:41.576 INFO: Press CTRL+C to quit
+== APP - payments == 2024-05-23 11:30:41.606 INFO: 127.0.0.1 - - [23/May/2024 11:30:41] "GET /dapr/config HTTP/1.1" 404 -
+== APP - payments == 2024-05-23 11:30:41.608 INFO: 127.0.0.1 - - [23/May/2024 11:30:41] "GET /dapr/subscribe HTTP/1.1" 404 -
+
+termination signal received: shutting down

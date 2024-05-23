@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderprocessing
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderprocessing
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        dapr.io/app-id: orderprocessing
+        dapr.io/app-port: "3000"
+        dapr.io/config: appconfig
+        dapr.io/enabled: "true"
+        dapr.io/metrics-port: "43541"
+        dapr.io/unix-domain-socket-path: ""
+      creationTimestamp: null
+      labels:
+        app: orderprocessing
+    spec:
+      containers:
+      - env:
+        - name: APP_PORT
+          value: "3000"
+        - name: DAPR_METRICS_PORT
+          value: "43541"
+        - name: APP_ID
+          value: orderprocessing
+        - name: APP_CHANNEL_ADDRESS
+        image: ttl.sh/orderprocessing-1500229@sha256:548034cb57023fc56a65290ea40f7859a68449220bcd0df232ca768f7157d1f8
+        imagePullPolicy: Always
+        name: orderprocessing
+        ports:
+        - containerPort: 3000
+        resources: {}

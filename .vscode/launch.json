@@ -1,0 +1,81 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}"
+        },
+        {
+            "name": "dagger_ci",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/dagger-test/hello-dagger/ci/main.go",
+            "cwd": "${workspaceFolder}/dagger-test/hello-dagger"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "OrderProcessing",
+            "program": "${workspaceFolder}/dapr/workflow/services/orderprocessing/app.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "daprd-run-orderprocessing",
+            "postDebugTask": "daprd-stop-orderprocessing"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Inventory",
+            "program": "${workspaceFolder}/dapr/workflow/services/inventory/app.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "daprd-run-inventory",
+            "postDebugTask": "daprd-stop-inventory"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Shipping",
+            "program": "${workspaceFolder}/dapr/workflow/services/shipping/app.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "daprd-run-shipping",
+            "postDebugTask": "daprd-stop-shipping"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Payments",
+            "program": "${workspaceFolder}/dapr/workflow/services/payments/app.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "daprd-run-payments",
+            "postDebugTask": "daprd-stop-payments"
+        },
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Notifications",
+            "program": "${workspaceFolder}/dapr/workflow/services/notifications/app.py",
+            "console": "integratedTerminal",
+            "preLaunchTask": "daprd-run-notifications",
+            "postDebugTask": "daprd-stop-notifications"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "All",
+            "configurations": [
+                "OrderProcessing",
+                "Inventory",
+                "Shipping",
+                "Payments",
+                "Notifications",
+            ]
+        },
+    ],
+    "stopAll": true,
+}

@@ -1,0 +1,25 @@
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Starting workflow runtime...
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering workflow 'process_order_workflow' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering workflow 'process_order_workflow' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering activity 'notify' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering activity 'notify' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering activity 'reserve_inventory' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering activity 'reserve_inventory' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering activity 'submit_payment' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering activity 'submit_payment' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering activity 'submit_order_to_shipping' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering activity 'submit_order_to_shipping' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 WorkflowRuntime INFO: Registering activity 'refund_payment' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.682 INFO: Registering activity 'refund_payment' with runtime
+== APP - orderprocessing == 2024-05-23 11:30:38.687 durabletask-worker INFO: Starting gRPC worker that connects to dns:127.0.0.1:46287
+== APP - orderprocessing ==  * Serving Flask app 'app'
+== APP - orderprocessing ==  * Debug mode: off
+== APP - orderprocessing == 2024-05-23 11:30:38.695 INFO: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+== APP - orderprocessing ==  * Running on http://127.0.0.1:3000
+== APP - orderprocessing == 2024-05-23 11:30:38.695 INFO: Press CTRL+C to quit
+== APP - orderprocessing == 2024-05-23 11:30:38.696 durabletask-worker INFO: Successfully connected to dns:127.0.0.1:46287. Waiting for work items...
+== APP - orderprocessing == 2024-05-23 11:30:38.777 INFO: 127.0.0.1 - - [23/May/2024 11:30:38] "GET /dapr/config HTTP/1.1" 404 -
+== APP - orderprocessing == 2024-05-23 11:30:38.779 INFO: 127.0.0.1 - - [23/May/2024 11:30:38] "GET /dapr/subscribe HTTP/1.1" 404 -
+== APP - orderprocessing == 2024-05-23 11:30:53.677 durabletask-worker INFO: Stopping gRPC worker...
+
+termination signal received: shutting down

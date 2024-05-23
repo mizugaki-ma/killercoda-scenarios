@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        dapr.io/app-id: inventory
+        dapr.io/app-port: "3002"
+        dapr.io/config: appconfig
+        dapr.io/enabled: "true"
+        dapr.io/metrics-port: "37601"
+        dapr.io/unix-domain-socket-path: ""
+      creationTimestamp: null
+      labels:
+        app: inventory
+    spec:
+      containers:
+      - env:
+        - name: APP_ID
+          value: inventory
+        - name: APP_CHANNEL_ADDRESS
+        - name: APP_PORT
+          value: "3002"
+        - name: DAPR_METRICS_PORT
+          value: "37601"
+        image: ttl.sh/inventory-5753631@sha256:e2aa1b22ff863f611ef673e397109dae0a3f5261ff08464d67735e1c826a9bca
+        imagePullPolicy: Always
+        name: inventory
+        ports:
+        - containerPort: 3002
+        resources: {}

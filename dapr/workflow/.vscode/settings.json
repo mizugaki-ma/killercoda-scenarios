@@ -1,0 +1,22 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+        "editor.rulers": [
+            119
+        ],
+    },
+    "autopep8.args": [
+        "--max-line-length=119"
+    ],
+    "python.autoComplete.extraPaths": [
+        "dapr/workflow/services/orderprocessing",
+        "dapr/workflow/services/inventory",
+        "dapr/workflow/services/shipping",
+        "dapr/workflow/services/payment",
+        "dapr/workflow/services/notifications",
+    ],
+}
