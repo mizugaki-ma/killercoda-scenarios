@@ -5,46 +5,46 @@ common:
   # daprdLogDestination: file #fileAndConsole
 apps:
 # The order processing service receives orders and executes workflows
-- appDirPath: ./services/orderprocessing/
+- appID: orderprocessing
+  appDirPath: ./services/orderprocessing/
   appPort: 3000
   # command: ["python3", "app.py"]
-  # ++ for k8s ++
+  # for k8s
   containerImage: ttl.sh/orderprocessing-1500229@sha256:548034cb57023fc56a65290ea40f7859a68449220bcd0df232ca768f7157d1f8
   createService: false
 
-
 # The notifications service receives pubsub notifications from workflow
-- appDirPath: ./services/notifications
+- appID: notifications
+  appDirPath: ./services/notifications
   appPort: 3001
   # command: ["python3", "app.py"]
-  # ++ for k8s ++
+  # for k8s
   containerImage: ttl.sh/notifications-5473000@sha256:e3eb3f89d00bbd8a54dd73034d69a0ff25aca2c43bf88b98da8caf7532efdd26
   createService: true
 
-
 # The inventory service is invoked directly by order processing workflows
-- appDirPath: ./services/inventory
+- appID: inventory
+  appDirPath: ./services/inventory
   appPort: 3002
   # command: ["python3", "app.py"]
-  # ++ for k8s ++
+  # for k8s
   containerImage: ttl.sh/inventory-5753631@sha256:e2aa1b22ff863f611ef673e397109dae0a3f5261ff08464d67735e1c826a9bca 
   createService: false
 
-
 # The payments service is invoked directly by order processing workflows
-- appDirPath: ./services/payments
+- appID: payments
+  appDirPath: ./services/payments
   appPort: 3003
   # command: ["python3", "app.py"]
-  # ++ for k8s ++
+  # for k8s
   containerImage: ttl.sh/payments-6828100@sha256:81a3171344efd92582d03779bd65885b0cc177c42d39a908d189bd03f95d4cdf 
   createService: false
 
-
 # The shipping service is invoked directly by order processing workflows
-- appDirPath: ./services/shipping
+- appID: shipping
+  appDirPath: ./services/shipping
   appPort: 3004
   # command: ["python3", "app.py"]
-  # ++ for k8s ++
+  # for k8s
   containerImage: ttl.sh/shipping-9955862@sha256:5eec17f283a4a1d58dcc1daba41a921740e60f18958cb3a2560e2558e58dd74f
   createService: false
-
