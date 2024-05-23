@@ -145,3 +145,151 @@ func (m *Workflow) BuildPush(
 	}
 	return refs, nil
 }
+
+// // Read dapr.yaml file on the Host
+// func (m *Workflow) ReadDaprYaml(
+// 	source *Directory,
+// 	expr string,
+// 	yamlFilePath string,
+// ) *Yq {
+// 	return dag.
+// 		Yq(source).
+// 		Set(expr, yamlFilePath)
+// }
+
+// func (m *Workflow) ReadDaprYaml_old(
+// 	ctx context.Context,
+// 	hostDir *Directory,
+// ) (*File, error) {
+// 	daprYaml := hostDir.File("dapr.yaml").With(__read)
+
+// 	return daprYaml, nil
+// }
+
+// type WithFileFunc func(r *File) *File
+
+// func __read(r *File) *File {
+// 	fmt.Printf("r: %v\n", r)
+// 	r_v2 := WriteDaprK8sYaml(marshalCtx, r)
+// 	return r_v2
+// }
+
+// Write dapr.k8s.yaml file to the Host
+// func WriteDaprK8sYaml(
+// 	ctx context.Context,
+// 	daprYaml *File,
+// ) *File {
+// 	return dag.Container().
+// 		From("linuxserver/yq:latest").
+// 		WithMountedFile("/mnt/dapr.yaml", daprYaml).
+// 		WithWorkdir("/mnt").
+// 		WithExec([]string{"yq", "-i", "'.version=2'", "dapr.yaml"}).
+// 		File("dapr.yaml")
+// }
+
+// func (m *Workflow) example(
+// 	source *Directory,
+// 	expr string,
+// 	yamlFilePath string,
+// ) *Yq {
+// 	return dag.
+// 		Yq(source).
+// 		Set(expr, yamlFilePath)
+// }
+
+// func ff(r *Client,) *Client{
+// 	marshalCtx
+// 	dag.With
+// 	r.LoadFileFromID()
+// }
+
+// func (m *Workflow) YamlShell(source *Directory) *Terminal {
+// 	return dag.Yq(source).Shell()
+// }
+
+// func (m *Workflow) ReadYaml(
+// 	ctx context.Context,
+// 	dir *Directory,
+// 	path string,
+// 	expr string,
+// ) (string, error) {
+// 	return dag.Yq(dir).
+// 		Get(ctx, expr, path)
+// }
+
+// func (m *Workflow) WriteYaml(
+// 	ctx context.Context,
+// 	dir *Directory,
+// 	path string,
+// 	expr string,
+// 	value string,
+// ) *Yq {
+// 	return dag.Yq(dir).
+// 		Set(expr, path)
+// }
+
+func (m *Workflow) ReadThenWrite(
+	ctx context.Context,
+	dir *Directory,
+	path string,
+	appName string,
+	appImage string,
+) (string, error) {
+	y0 := dag.Yq(dir)
+
+	// Get the container image of the app
+	exprImage1 := fmt.Sprintf(".apps[]| select(.appID == \"%s\").containerImage", appName)
+	imgOld, err := y0.Get(
+		ctx,
+		exprImage1,
+		path,
+	)
+	if err != nil {
+		return "", err
+	}
+
+	// Set the new container image of the app
+	// exprImage2 := fmt.Sprintf("s@ttl.sh/%s.*$@%s@", appName, appImage)
+	// y1 := y0.Container().
+	// 	WithoutEntrypoint().
+	// 	WithExec([]string{
+	// 		"sed",
+	// 		"-iE",
+	// 		exprImage2,
+	// 		path,
+	// 	})
+
+	exprImage2 := fmt.Sprintf("s#%s#%s#", imgOld, appImage)
+	y1 := y0.Container().
+		// WithMountedFile(path, dir.File(path)).
+		WithoutEntrypoint().
+		WithExec([]string{
+			"sed",
+			"-i",
+			exprImage2,
+			path,
+		}).
+		WithExec([]string{
+			"cat",
+			path,})
+
+	stdout, err := y1.Stdout(ctx)
+	if err != nil {
+		return "", err
+	}
+
+
+	// y2 := y1.File(path)
+	// opts := FileExportOpts{
+	// 	AllowParentDirPath: true,
+	// }
+	// _, err = y2.Export(ctx, fmt.Sprint("2", path), opts)
+	// if err != nil {
+	// 	return err
+	// }
+
+	return stdout, nil
+}
+
+// yq '.apps[]| select(.appID == "inventory")'  dapr-k8s.yaml > inventory.yaml
+// yq '.containerImage = "ttl.sh/inventory-4689988@sha256:fc774c5d5482ccd778d1a8bcd37b15e2992ed8245ff2136ffe680c8f5da804c9"' inventory.yaml
