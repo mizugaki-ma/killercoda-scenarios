@@ -16,7 +16,7 @@ spec:
         dapr.io/app-port: "3003"
         dapr.io/config: appconfig
         dapr.io/enabled: "true"
-        dapr.io/metrics-port: "39913"
+        dapr.io/metrics-port: "37419"
         dapr.io/unix-domain-socket-path: ""
       creationTimestamp: null
       labels:
@@ -24,14 +24,14 @@ spec:
     spec:
       containers:
       - env:
-        - name: APP_PORT
-          value: "3003"
-        - name: DAPR_METRICS_PORT
-          value: "39913"
         - name: APP_ID
           value: payments
         - name: APP_CHANNEL_ADDRESS
-        image: ttl.sh/payments-6828100@sha256:81a3171344efd92582d03779bd65885b0cc177c42d39a908d189bd03f95d4cdf
+        - name: APP_PORT
+          value: "3003"
+        - name: DAPR_METRICS_PORT
+          value: "37419"
+        image: ttl.sh/payments-4823648@sha256:10a293dfaf3082b7bb29fa147185f6fe51e35a7d3f7b276ddb27f72421f70279
         imagePullPolicy: Always
         name: payments
         ports:

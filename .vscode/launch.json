@@ -5,6 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Package with Kubernetes",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/dapr/workflow/services/notifications/app.py",
+            "preLaunchTask": "bridge-to-kubernetes.resource",
+            "env": {
+                "GRPC_DNS_RESOLVER": "native"
+            }
+        },
+        {
             "name": "Launch Package",
             "type": "go",
             "request": "launch",
@@ -63,7 +73,7 @@
             "console": "integratedTerminal",
             "preLaunchTask": "daprd-run-notifications",
             "postDebugTask": "daprd-stop-notifications"
-        },
+        }
     ],
     "compounds": [
         {

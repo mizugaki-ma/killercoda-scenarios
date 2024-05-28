@@ -16,7 +16,7 @@ spec:
         dapr.io/app-port: "3004"
         dapr.io/config: appconfig
         dapr.io/enabled: "true"
-        dapr.io/metrics-port: "33489"
+        dapr.io/metrics-port: "42339"
         dapr.io/unix-domain-socket-path: ""
       creationTimestamp: null
       labels:
@@ -24,14 +24,14 @@ spec:
     spec:
       containers:
       - env:
+        - name: APP_ID
+          value: shipping
         - name: APP_CHANNEL_ADDRESS
         - name: APP_PORT
           value: "3004"
         - name: DAPR_METRICS_PORT
-          value: "33489"
-        - name: APP_ID
-          value: shipping
-        image: ttl.sh/shipping-9955862@sha256:5eec17f283a4a1d58dcc1daba41a921740e60f18958cb3a2560e2558e58dd74f
+          value: "42339"
+        image: ttl.sh/shipping-8158471@sha256:2c84c42f74c6e672d947daf53d89dc9c06eeac3944c90dd203425f6f779f98d0
         imagePullPolicy: Always
         name: shipping
         ports:

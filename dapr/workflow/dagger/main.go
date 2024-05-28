@@ -19,28 +19,15 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"strings"
+	"time"
 )
 
 type Workflow struct{}
 
-// Returns a container that echoes whatever string argument is provided
-func (m *Workflow) ContainerEcho(stringArg string) *Container {
-	return dag.Container().From("alpine:latest").WithExec([]string{"echo", stringArg})
-}
-
-// Returns lines that match a pattern in the files of the provided Directory
-func (m *Workflow) GrepDir(
-	ctx context.Context,
-	directoryArg *Directory,
-	pattern string,
-) (string, error) {
-
-	return dag.Container().
-		From("alpine:latest").
-		WithMountedDirectory("/mnt", directoryArg).
-		WithWorkdir("/mnt").
-		WithExec([]string{"grep", "-R", pattern, "."}).
-		Stdout(ctx)
+type ContainerIMageRef struct {
+	AppName  string
+	ImageRef string
 }
 
 func (m *Workflow) Build(
@@ -87,6 +74,39 @@ func (m *Workflow) Push(
 	return ref, nil
 }
 
+func PushGo(
+	ctr *Container,
+	ctx context.Context,
+	imageName string,
+	ch chan *ContainerIMageRef,
+	isLast bool,
+) (string, error) {
+
+	ref, err := ctr.Publish(
+		ctx,
+		fmt.Sprintf(
+			"ttl.sh/%s-%.0f",
+			imageName,
+			math.Floor(rand.Float64()*10000000),
+		),
+	)
+	if err != nil {
+		fmt.Println("Failed to push image:", ref)
+		panic(err)
+	}
+	fmt.Println("Successfully pushed image:", ref)
+	fmt.Println("Is Last: ", isLast)
+	ch <- &ContainerIMageRef{
+		AppName:  imageName,
+		ImageRef: ref,
+	}
+	if isLast {
+		// time.Sleep(2 * time.Second)
+		close(ch)
+	}
+	return ref, nil
+}
+
 // Get the list of app names in the directory
 func (m *Workflow) AppName(
 	ctx context.Context,
@@ -100,19 +120,159 @@ func (m *Workflow) AppName(
 }
 
 // Get the directory of the app
-func (m *Workflow) Services(
-	ctx context.Context,
-	dir *Directory,
-	appName string,
-) (*Directory, error) {
-	appDir := dir.WithDirectory(".", dir).Directory(appName)
-	return appDir, nil
-}
+// func (m *Workflow) Services(
+// 	ctx context.Context,
+// 	dir *Directory,
+// 	appName string,
+// ) (*Directory, error) {
+// 	appDir := dir.WithDirectory(".", dir).Directory(appName)
+// 	return appDir, nil
+// }
 
-func (m *Workflow) BuildPush(
+// func (m *Workflow) BuildPush(
+// 	ctx context.Context,
+// 	// Service directory where the app directories are located
+// 	serviceDir *Directory,
+// 	// Dir path where the dapr.yaml file is located
+// 	daprDir *Directory,
+// 	// Path to the dapr.yaml(for k8s) file
+// 	// +default="dapr-k8s.yaml"
+// 	path string,
+// ) (string, error) {
+
+// 	// Return a list of app names
+// 	appNames, err := m.AppName(ctx, serviceDir)
+// 	if err != nil {
+// 		fmt.Println("Failed to get app names")
+// 		panic(err)
+// 	}
+
+// 	var refs []string
+
+// 	// y0 := dag.Yq(daprDir)
+// 	// var c0 *Container
+// 	c0 := dag.Yq(daprDir).Container()
+
+// 	// Build app Images and push to ttl.sh registry
+// 	for _, appName := range appNames {
+// 		appDir := serviceDir.Directory(appName)
+// 		fmt.Println("App Name: ", appName)
+// 		fmt.Println("App Directory: ", *appDir)
+
+// 		ctr := m.Build(ctx, appDir)
+// 		ref, err := m.Push(ctx, ctr, appName)
+// 		if err != nil {
+// 			fmt.Println("Failed to push image:", appName)
+// 			return "", err
+// 		}
+// 		refs = append(refs, ref)
+
+// 		c0 = m.UpdateDaprK8sYaml(
+// 			ctx,
+// 			daprDir,
+// 			path,
+// 			appName,
+// 			ref,
+// 			c0,
+// 		)
+// 	}
+// 	fmt.Println(refs)
+
+// 	stdout, err := c0.WithoutEntrypoint().
+// 		WithExec([]string{
+// 			"cat",
+// 			path,
+// 		}).Stdout(ctx)
+// 	if err != nil {
+// 		return "", err
+// 	}
+
+// 	return stdout, nil
+
+// }
+
+// func (m *Workflow) BuildPushGo(
+// 	ctx context.Context,
+// 	// Service directory where the app directories are located
+// 	serviceDir *Directory,
+// 	// Dir path where the dapr.yaml file is located
+// 	daprDir *Directory,
+// 	// Path to the dapr.yaml(for k8s) file
+// 	// +default="dapr-k8s.yaml"
+// 	path string,
+// ) (string, error) {
+
+// 	// Return a list of app names
+// 	appNames, err := m.AppName(ctx, serviceDir)
+// 	if err != nil {
+// 		fmt.Println("Failed to get app names")
+// 		panic(err)
+// 	}
+
+// 	var refs []string
+
+// 	// y0 := dag.Yq(daprDir)
+// 	// var c0 *Container
+// 	c0 := dag.Yq(daprDir).Container()
+
+// 	var wg sync.WaitGroup
+// 	wg.Add(len(appNames))
+
+// 	// Build app Images and push to ttl.sh registry
+// 	for _, appName := range appNames {
+// 		appDir := serviceDir.Directory(appName)
+// 		fmt.Println("App Name: ", appName)
+// 		fmt.Println("App Directory: ", *appDir)
+
+// 		go func(appName string, dir *Directory) {
+// 			defer wg.Done()
+// 			ctr := m.Build(ctx, appDir)
+// 			ref, err := m.Push(ctx, ctr, appName)
+// 			if err != nil {
+// 				fmt.Println("Failed to push image:", appName)
+// 				panic(err)
+// 			}
+// 			refs = append(refs, ref)
+
+// 			c0 = m.UpdateDaprK8sYaml(
+// 				ctx,
+// 				daprDir,
+// 				path,
+// 				appName,
+// 				ref,
+// 				c0,
+// 			)
+// 		}(appName, appDir)
+// 	}
+
+// 	wg.Wait()
+// 	fmt.Println(refs)
+
+// 	stdout, err := c0.WithoutEntrypoint().
+// 		WithExec([]string{
+// 			"cat",
+// 			path,
+// 		}).Stdout(ctx)
+// 	if err != nil {
+// 		return "", err
+// 	}
+
+// 	return stdout, nil
+
+// }
+
+// BuildPushGo builds and pushes the app images to ttl.sh registry
+// and returns the updated dapr-k8s.yaml file
+func (m *Workflow) BuildPushGo(
 	ctx context.Context,
+	// Service directory where the app directories are located
 	serviceDir *Directory,
-) ([]string, error) {
+	// Dir path where the dapr.yaml file is located
+	daprDir *Directory,
+	// Path to the dapr.yaml(for k8s) file
+	// +default="dapr-k8s.yaml"
+	path string,
+) (*File, error) {
 
 	// Return a list of app names
 	appNames, err := m.AppName(ctx, serviceDir)
@@ -121,146 +281,112 @@ func (m *Workflow) BuildPush(
 		panic(err)
 	}
 
-	// // Return a list of app directory objects
-	// appDirs, err := m.Services(ctx, serviceDir)
-	// if err != nil {
-	// 	fmt.Println("Failed to get app directories")
-	// 	panic(err)
-	// }
+	// var refs []string
 
-	var refs []string
+	// y0 := dag.Yq(daprDir)
+	// var c0 *Container
+	c0 := dag.Yq(daprDir).Container()
+
+	ch := make(chan *ContainerIMageRef, len(appNames))
+	// var once sync.Once
+	// defer close(ch)
+
+	// var wg sync.WaitGroup
 	// Build app Images and push to ttl.sh registry
 	for _, appName := range appNames {
+		// i := i
+		// wg.Add(1)
 		appDir := serviceDir.Directory(appName)
 		fmt.Println("App Name: ", appName)
-		fmt.Println("App Directory: ", *appDir)
+		// isLast := (i == len(appNames)-1)
+		go func(appName string, dir *Directory) {
 
-		ctr := m.Build(ctx, appDir)
-		ref, err := m.Push(ctx, ctr, appName)
-		if err != nil {
-			fmt.Println("Failed to push image:", appName)
-			return nil, err
-		}
-		refs = append(refs, ref)
+			// Build and Push the app image
+			ctr := m.Build(ctx, appDir)
+			ref, err := m.Push(ctx, ctr, appName)
+			// _, err := PushGo(ctr, ctx, appName, ch, isLast)
+
+			if err != nil {
+				fmt.Println("Failed to push image:", appName)
+				panic(err)
+			}
+			// refs = append(refs, ref)
+
+			ch <- &ContainerIMageRef{
+				AppName:  appName,
+				ImageRef: ref,
+			}
+			// if i == len(appNames)-1 {
+			// 	// time.Sleep(2 * time.Second)
+			// 	close(ch)
+			// }
+		}(appName, appDir)
+
 	}
-	return refs, nil
+
+	// var once sync.Once
+	// Wait for all images to be pushed
+	for {
+		if len(ch) < len(appNames) {
+			fmt.Println("Waiting for all images to be pushed")
+			fmt.Printf("images pushed: %v/%v", len(ch), len(appNames))
+			time.Sleep(1 * time.Second)
+			continue
+		} else {
+			fmt.Printf("images pushed: %v/%v", len(ch), len(appNames))
+			close(ch)
+		}
+		break
+	}
+
+	for {
+		c, ok := <-ch
+		if !ok {
+			break
+		}
+		c0 = m.UpdateDaprK8sYaml(
+			ctx,
+			daprDir,
+			path,
+			c.AppName,
+			c.ImageRef,
+			c0,
+		)
+		// wg.Done()
+	}
+	// wg.Wait()
+
+	yamlFile := c0.
+		File(path)
+
+	return yamlFile, nil
 }
 
-// // Read dapr.yaml file on the Host
-// func (m *Workflow) ReadDaprYaml(
-// 	source *Directory,
-// 	expr string,
-// 	yamlFilePath string,
-// ) *Yq {
-// 	return dag.
-// 		Yq(source).
-// 		Set(expr, yamlFilePath)
-// }
-
-// func (m *Workflow) ReadDaprYaml_old(
-// 	ctx context.Context,
-// 	hostDir *Directory,
-// ) (*File, error) {
-// 	daprYaml := hostDir.File("dapr.yaml").With(__read)
-
-// 	return daprYaml, nil
-// }
-
-// type WithFileFunc func(r *File) *File
-
-// func __read(r *File) *File {
-// 	fmt.Printf("r: %v\n", r)
-// 	r_v2 := WriteDaprK8sYaml(marshalCtx, r)
-// 	return r_v2
-// }
-
-// Write dapr.k8s.yaml file to the Host
-// func WriteDaprK8sYaml(
-// 	ctx context.Context,
-// 	daprYaml *File,
-// ) *File {
-// 	return dag.Container().
-// 		From("linuxserver/yq:latest").
-// 		WithMountedFile("/mnt/dapr.yaml", daprYaml).
-// 		WithWorkdir("/mnt").
-// 		WithExec([]string{"yq", "-i", "'.version=2'", "dapr.yaml"}).
-// 		File("dapr.yaml")
-// }
-
-// func (m *Workflow) example(
-// 	source *Directory,
-// 	expr string,
-// 	yamlFilePath string,
-// ) *Yq {
-// 	return dag.
-// 		Yq(source).
-// 		Set(expr, yamlFilePath)
-// }
-
-// func ff(r *Client,) *Client{
-// 	marshalCtx
-// 	dag.With
-// 	r.LoadFileFromID()
-// }
-
-// func (m *Workflow) YamlShell(source *Directory) *Terminal {
-// 	return dag.Yq(source).Shell()
-// }
-
-// func (m *Workflow) ReadYaml(
-// 	ctx context.Context,
-// 	dir *Directory,
-// 	path string,
-// 	expr string,
-// ) (string, error) {
-// 	return dag.Yq(dir).
-// 		Get(ctx, expr, path)
-// }
-
-// func (m *Workflow) WriteYaml(
-// 	ctx context.Context,
-// 	dir *Directory,
-// 	path string,
-// 	expr string,
-// 	value string,
-// ) *Yq {
-// 	return dag.Yq(dir).
-// 		Set(expr, path)
-// }
-
-func (m *Workflow) ReadThenWrite(
+func (m *Workflow) UpdateDaprK8sYaml(
 	ctx context.Context,
 	dir *Directory,
 	path string,
 	appName string,
 	appImage string,
-) (string, error) {
-	y0 := dag.Yq(dir)
-
+	ctr *Container,
+) *Container {
 	// Get the container image of the app
 	exprImage1 := fmt.Sprintf(".apps[]| select(.appID == \"%s\").containerImage", appName)
-	imgOld, err := y0.Get(
-		ctx,
-		exprImage1,
-		path,
-	)
+	stdout, err := ctr.
+		WithoutEntrypoint().
+		WithExec([]string{
+			"yq",
+			exprImage1,
+			path,
+		}).Stdout(ctx)
 	if err != nil {
-		return "", err
+		panic(err)
 	}
 
-	// Set the new container image of the app
-	// exprImage2 := fmt.Sprintf("s@ttl.sh/%s.*$@%s@", appName, appImage)
-	// y1 := y0.Container().
-	// 	WithoutEntrypoint().
-	// 	WithExec([]string{
-	// 		"sed",
-	// 		"-iE",
-	// 		exprImage2,
-	// 		path,
-	// 	})
+	imgOld := strings.TrimSuffix(stdout, "\n")
 
 	exprImage2 := fmt.Sprintf("s#%s#%s#", imgOld, appImage)
-	y1 := y0.Container().
+	c := ctr.
 		// WithMountedFile(path, dir.File(path)).
 		WithoutEntrypoint().
 		WithExec([]string{
@@ -271,25 +397,12 @@ func (m *Workflow) ReadThenWrite(
 		}).
 		WithExec([]string{
 			"cat",
-			path,})
+			path})
 
-	stdout, err := y1.Stdout(ctx)
-	if err != nil {
-		return "", err
-	}
-
-
-	// y2 := y1.File(path)
-	// opts := FileExportOpts{
-	// 	AllowParentDirPath: true,
-	// }
-	// _, err = y2.Export(ctx, fmt.Sprint("2", path), opts)
+	return c
+	// stdout, err := y1.Stdout(ctx)
 	// if err != nil {
-	// 	return err
+	// 	return "", err
 	// }
-
-	return stdout, nil
+	// return stdout, nil
 }
-
-// yq '.apps[]| select(.appID == "inventory")'  dapr-k8s.yaml > inventory.yaml
-// yq '.containerImage = "ttl.sh/inventory-4689988@sha256:fc774c5d5482ccd778d1a8bcd37b15e2992ed8245ff2136ffe680c8f5da804c9"' inventory.yaml

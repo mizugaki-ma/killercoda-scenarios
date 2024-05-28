@@ -16,7 +16,7 @@ spec:
         dapr.io/app-port: "3002"
         dapr.io/config: appconfig
         dapr.io/enabled: "true"
-        dapr.io/metrics-port: "37601"
+        dapr.io/metrics-port: "36993"
         dapr.io/unix-domain-socket-path: ""
       creationTimestamp: null
       labels:
@@ -30,8 +30,8 @@ spec:
         - name: APP_PORT
           value: "3002"
         - name: DAPR_METRICS_PORT
-          value: "37601"
-        image: ttl.sh/inventory-5753631@sha256:e2aa1b22ff863f611ef673e397109dae0a3f5261ff08464d67735e1c826a9bca
+          value: "36993"
+        image: ttl.sh/inventory-1799997@sha256:d1ff555cc13594866c9e91918954c329685c880fec5fc06f285651301efd42e5
         imagePullPolicy: Always
         name: inventory
         ports:

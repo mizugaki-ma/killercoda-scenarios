@@ -1,9 +1,0 @@
-== APP - inventory ==  * Serving Flask app 'app'
-== APP - inventory ==  * Debug mode: on
-== APP - inventory == 2024-05-23 11:30:04.795 INFO: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
-== APP - inventory ==  * Running on http://127.0.0.1:3002
-== APP - inventory == 2024-05-23 11:30:04.795 INFO: Press CTRL+C to quit
-== APP - inventory == 2024-05-23 11:30:04.836 INFO: 127.0.0.1 - - [23/May/2024 11:30:04] "GET /dapr/config HTTP/1.1" 404 -
-== APP - inventory == 2024-05-23 11:30:04.838 INFO: 127.0.0.1 - - [23/May/2024 11:30:04] "GET /dapr/subscribe HTTP/1.1" 404 -
-
-termination signal received: shutting down

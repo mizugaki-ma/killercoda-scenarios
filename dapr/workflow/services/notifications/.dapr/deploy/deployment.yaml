@@ -16,7 +16,7 @@ spec:
         dapr.io/app-port: "3001"
         dapr.io/config: appconfig
         dapr.io/enabled: "true"
-        dapr.io/metrics-port: "38685"
+        dapr.io/metrics-port: "34425"
         dapr.io/unix-domain-socket-path: ""
       creationTimestamp: null
       labels:
@@ -24,14 +24,14 @@ spec:
     spec:
       containers:
       - env:
-        - name: APP_ID
-          value: notifications
-        - name: APP_CHANNEL_ADDRESS
         - name: APP_PORT
           value: "3001"
         - name: DAPR_METRICS_PORT
-          value: "38685"
-        image: ttl.sh/notifications-5473000@sha256:e3eb3f89d00bbd8a54dd73034d69a0ff25aca2c43bf88b98da8caf7532efdd26
+          value: "34425"
+        - name: APP_ID
+          value: notifications
+        - name: APP_CHANNEL_ADDRESS
+        image: ttl.sh/notifications-1298129@sha256:e8cf0c51e16d9910bdae1e5b32daae6a50fe20365c2a4b594b7e74557057c635
         imagePullPolicy: Always
         name: notifications
         ports:
