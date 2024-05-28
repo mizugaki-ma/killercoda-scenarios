@@ -74,51 +74,44 @@ func (m *Workflow) Push(
 	return ref, nil
 }
 
-func PushGo(
-	ctr *Container,
+func (m *Workflow) UpdateDaprK8sYaml(
 	ctx context.Context,
-	imageName string,
-	ch chan *ContainerIMageRef,
-	isLast bool,
-) (string, error) {
+	daprFile *File,
+	appName string,
+	appImage string,
+	ctr *Container,
+) {
+	// Get the container image of the app
+	exprImage1 := fmt.Sprintf(".apps[]| select(.appID == \"%s\").containerImage", appName)
 
-	ref, err := ctr.Publish(
-		ctx,
-		fmt.Sprintf(
-			"ttl.sh/%s-%.0f",
-			imageName,
-			math.Floor(rand.Float64()*10000000),
-		),
-	)
+	filePath, _ := daprFile.Name(ctx)
+	stdout, err := ctr.
+		WithoutEntrypoint().
+		WithExec([]string{
+			"yq",
+			exprImage1,
+			filePath,
+		}).Stdout(ctx)
 	if err != nil {
-		fmt.Println("Failed to push image:", ref)
 		panic(err)
 	}
-	fmt.Println("Successfully pushed image:", ref)
-	fmt.Println("Is Last: ", isLast)
-	ch <- &ContainerIMageRef{
-		AppName:  imageName,
-		ImageRef: ref,
-	}
-	if isLast {
-		// time.Sleep(2 * time.Second)
-		close(ch)
-	}
-	return ref, nil
-}
+	appImageOld := strings.TrimSuffix(stdout, "\n")
 
-// Get the list of app names in the directory
-func (m *Workflow) AppName(
-	ctx context.Context,
-	dir *Directory,
-) ([]string, error) {
-	apps, err := dir.Entries(ctx)
-	if err != nil {
-		fmt.Printf("failed to list directory entries: %v", err)
-	}
-	return apps, nil
+	// Update the container image of the app
+	exprImage2 := fmt.Sprintf("s#%s#%s#", appImageOld, appImage)
+	ctr.
+		// WithMountedFile(path, dir.File(path)).
+		WithoutEntrypoint().
+		WithExec([]string{
+			"sed",
+			"-i",
+			exprImage2,
+			filePath,
+		}).
+		WithExec([]string{
+			"cat",
+			filePath})
 }
-
 
 // BuildPushGo builds and pushes the app images to ttl.sh registry
 // and returns the updated dapr-k8s.yaml file
@@ -128,25 +121,25 @@ func (m *Workflow) BuildPushGo(
 	serviceDir *Directory,
 	// Dir path where the dapr.yaml file is located
 	daprDir *Directory,
-	// Path to the dapr.yaml(for k8s) file
-	// +default="dapr-k8s.yaml"
-	path string,
+	// Path to the template of dapr.yaml file (for k8s use case)
+	// +default="dapr-k8s-tpl.yaml"
+	templatePath string,
 ) (*File, error) {
 
 	// Return a list of app names
-	appNames, err := m.AppName(ctx, serviceDir)
+	appNames, err := serviceDir.Entries(ctx)
 	if err != nil {
 		fmt.Println("Failed to get app names")
 		panic(err)
 	}
 
-	c0 := dag.Yq(daprDir).Container()
+	// Create a channel to receive the image refs
 	ch := make(chan *ContainerIMageRef, len(appNames))
-	// Build app Images and push to ttl.sh registry
+
+	// Build app Images and push to ttl.sh registry concurrently
 	for _, appName := range appNames {
 		appDir := serviceDir.Directory(appName)
-		fmt.Println("App Name: ", appName)
-		go func(appName string, dir *Directory) {
+		go func(appName string, appDir *Directory) {
 			// Build and Push the app image
 			ctr := m.Build(ctx, appDir)
 			ref, err := m.Push(ctx, ctr, appName)
@@ -159,14 +152,17 @@ func (m *Workflow) BuildPushGo(
 				ImageRef: ref,
 			}
 		}(appName, appDir)
-
 	}
+
+	// Create a new Container to update the dapr.yaml file
+	c0 := dag.Yq(daprDir).Container()
+	daprYaml := daprDir.File(templatePath)
 
 	// Wait for all images to be pushed
 	for {
 		if len(ch) < len(appNames) {
 			fmt.Println("Waiting for all images to be pushed")
-			fmt.Printf("images pushed: %v/%v", len(ch), len(appNames))
+			fmt.Printf("image pushed: %v/%v", len(ch), len(appNames))
 			time.Sleep(1 * time.Second)
 			continue
 		} else {
@@ -176,62 +172,22 @@ func (m *Workflow) BuildPushGo(
 		break
 	}
 
+	// Update the dapr.yaml file sequentially
 	for {
 		c, ok := <-ch
 		if !ok {
 			break
 		}
-		c0 = m.UpdateDaprK8sYaml(
+
+		m.UpdateDaprK8sYaml(
 			ctx,
-			daprDir,
-			path,
+			daprYaml,
 			c.AppName,
 			c.ImageRef,
 			c0,
 		)
 	}
-	yamlFile := c0.
-		File(path)
 
-	return yamlFile, nil
-}
-
-func (m *Workflow) UpdateDaprK8sYaml(
-	ctx context.Context,
-	dir *Directory,
-	path string,
-	appName string,
-	appImage string,
-	ctr *Container,
-) *Container {
-	// Get the container image of the app
-	exprImage1 := fmt.Sprintf(".apps[]| select(.appID == \"%s\").containerImage", appName)
-	stdout, err := ctr.
-		WithoutEntrypoint().
-		WithExec([]string{
-			"yq",
-			exprImage1,
-			path,
-		}).Stdout(ctx)
-	if err != nil {
-		panic(err)
-	}
-
-	imgOld := strings.TrimSuffix(stdout, "\n")
-
-	exprImage2 := fmt.Sprintf("s#%s#%s#", imgOld, appImage)
-	c := ctr.
-		// WithMountedFile(path, dir.File(path)).
-		WithoutEntrypoint().
-		WithExec([]string{
-			"sed",
-			"-i",
-			exprImage2,
-			path,
-		}).
-		WithExec([]string{
-			"cat",
-			path})
-
-	return c
+	// Return the updated dapr.yaml file
+	return c0.File(templatePath), nil
 }

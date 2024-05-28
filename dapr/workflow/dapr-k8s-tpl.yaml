@@ -1,0 +1,50 @@
+version: 1
+common:
+  # resourcesPaths: ["./components"]
+  # appLogDestination: fileAndConsole
+  # daprdLogDestination: file #fileAndConsole
+apps:
+# The order processing service receives orders and executes workflows
+- appID: orderprocessing
+  appDirPath: ./services/orderprocessing/
+  appPort: 3000
+  # command: ["python3", "app.py"]
+  # for k8s
+  containerImage: ttl.sh/orderprocessing-1234567@sha256:13c69dbb55b3d1fbce7ff2a0ccdebe771e4fe91d3f0d0a92fffa2ce262d220dc
+  createService: false
+
+# The notifications service receives pubsub notifications from workflow
+- appID: notifications
+  appDirPath: ./services/notifications
+  appPort: 3001
+  # command: ["python3", "app.py"]
+  # for k8s
+  containerImage: ttl.sh/notifications-1234567@sha256:e8cf0c51e16d9910bdae1e5b32daae6a50fe20365c2a4b594b7e74557057c635
+  createService: true
+
+# The inventory service is invoked directly by order processing workflows
+- appID: inventory
+  appDirPath: ./services/inventory
+  appPort: 3002
+  # command: ["python3", "app.py"]
+  # for k8s
+  containerImage: ttl.sh/inventory-1234567@sha256:d1ff555cc13594866c9e91918954c329685c880fec5fc06f285651301efd42e5 
+  createService: false
+
+# The payments service is invoked directly by order processing workflows
+- appID: payments
+  appDirPath: ./services/payments
+  appPort: 3003
+  # command: ["python3", "app.py"]
+  # for k8s
+  containerImage: ttl.sh/payments-1234567@sha256:10a293dfaf3082b7bb29fa147185f6fe51e35a7d3f7b276ddb27f72421f70279 
+  createService: false
+
+# The shipping service is invoked directly by order processing workflows
+- appID: shipping
+  appDirPath: ./services/shipping
+  appPort: 3004
+  # command: ["python3", "app.py"]
+  # for k8s
+  containerImage: ttl.sh/shipping-1234567@sha256:2c84c42f74c6e672d947daf53d89dc9c06eeac3944c90dd203425f6f779f98d0
+  createService: false
